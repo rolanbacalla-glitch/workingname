@@ -1,0 +1,136 @@
+@import 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 40 20% 98%;
+        --foreground: 0 0% 10%;
+        --card: 40 20% 97%;
+        --card-foreground: 0 0% 10%;
+        --primary: 24 62% 57%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 195 36% 47%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 40 15% 92%;
+        --muted-foreground: 0 0% 40%;
+        --accent: 24 62% 57%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 40 15% 88%;
+        --input: 40 15% 88%;
+        --ring: 24 62% 57%;
+        --radius: 0.75rem;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-sand-50 text-neutral-900 font-sans antialiased;
+        font-feature-settings: "cv11", "ss01";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Focus styles */
+    *:focus-visible {
+        @apply outline-none ring-2 ring-sunset-400 ring-offset-2 ring-offset-sand-50;
+    }
+}
+
+@layer components {
+
+    /* Apple-inspired button styles */
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-6 py-3 bg-sunset-500 text-white font-medium rounded-xl hover:bg-sunset-600 active:bg-sunset-700 transition-all duration-200 ease-out shadow-soft hover:shadow-soft-md disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center px-6 py-3 bg-white text-neutral-900 font-medium rounded-xl border border-sand-200 hover:bg-sand-50 active:bg-sand-100 transition-all duration-200 ease-out shadow-soft hover:shadow-soft-md disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-ghost {
+        @apply inline-flex items-center justify-center px-4 py-2 text-neutral-700 font-medium rounded-lg hover:bg-sand-100 active:bg-sand-200 transition-all duration-200 ease-out disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    /* Card styles */
+    .card {
+        @apply bg-white rounded-2xl shadow-soft transition-all duration-300 ease-out hover:shadow-soft-md;
+    }
+
+    .card-interactive {
+        @apply card cursor-pointer hover:scale-[1.02] active:scale-[0.98];
+    }
+
+    /* Input styles */
+    .input {
+        @apply w-full px-4 py-3 bg-white border border-sand-200 rounded-xl text-neutral-900 placeholder:text-neutral-400 transition-all duration-200 ease-out focus:border-ocean-400 focus:ring-2 focus:ring-ocean-100;
+    }
+
+    /* Chip/tag styles */
+    .chip {
+        @apply inline-flex items-center px-3 py-1.5 bg-sand-100 text-neutral-700 text-sm font-medium rounded-full transition-all duration-200 ease-out;
+    }
+
+    .chip-active {
+        @apply bg-ocean-500 text-white;
+    }
+
+    .chip-sunset {
+        @apply bg-sunset-100 text-sunset-700;
+    }
+
+    /* Section container */
+    .section-container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+}
+
+@layer utilities {
+
+    /* Text gradient for hero */
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-sunset-500 to-ocean-500;
+    }
+
+    /* Smooth fade transitions */
+    .fade-enter {
+        @apply opacity-0;
+    }
+
+    .fade-enter-active {
+        @apply opacity-100 transition-opacity duration-300;
+    }
+
+    .fade-exit {
+        @apply opacity-100;
+    }
+
+    .fade-exit-active {
+        @apply opacity-0 transition-opacity duration-300;
+    }
+}
+
+/* Leaflet map overrides */
+.leaflet-container {
+    font-family: inherit;
+    border-radius: 1rem;
+}
+
+.leaflet-popup-content-wrapper {
+    @apply rounded-xl shadow-soft-md border-0;
+}
+
+.leaflet-popup-content {
+    @apply m-0 p-4;
+}
