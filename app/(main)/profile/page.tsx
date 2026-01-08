@@ -409,7 +409,7 @@ export default function ProfilePage() {
                                 })}
                             </div>
                         ) : (
-                            <p className="text-neutral-500 text-sm">You haven't requested to join any experiences yet.</p>
+                            <p className="text-neutral-500 text-sm">You haven&apos;t requested to join any experiences yet.</p>
                         )}
                     </Card>
 
@@ -434,7 +434,7 @@ export default function ProfilePage() {
                                     ))}
                             </div>
                         ) : (
-                            <p className="text-neutral-500 text-sm">You haven't waved at anyone yet.</p>
+                            <p className="text-neutral-500 text-sm">You haven&apos;t waved at anyone yet.</p>
                         )}
                     </Card>
                 </div>

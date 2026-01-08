@@ -12,7 +12,7 @@ export default function NotFound() {
 
                 <h1 className="text-4xl font-bold text-neutral-900 mb-4">Page not found</h1>
                 <p className="text-neutral-500 mb-8">
-                    Looks like you've wandered off the trail. Let's get you back on track.
+                    Looks like you&apos;ve wandered off the trail. Let&apos;s get you back on track.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">

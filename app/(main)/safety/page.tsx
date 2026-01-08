@@ -250,7 +250,7 @@ export default function SafetyPage() {
                     <Card className="p-6 bg-ocean-50 border-ocean-200">
                         <h2 className="text-lg font-semibold text-ocean-900 mb-3">Need help now?</h2>
                         <p className="text-sm text-ocean-700 mb-4">
-                            If you're in immediate danger, contact local emergency services first.
+                            If you&apos;re in immediate danger, contact local emergency services first.
                         </p>
                         <div className="text-3xl font-bold text-ocean-900 mb-2">911</div>
                         <p className="text-xs text-ocean-600">Philippines Emergency Number</p>

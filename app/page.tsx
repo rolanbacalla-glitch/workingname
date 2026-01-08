@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import {
     Compass,
     Users,
@@ -76,10 +77,13 @@ export default function LandingPage() {
                     <div className="mt-16 relative animate-fadeIn" style={{ animationDelay: '400ms' }}>
                         <div className="absolute inset-0 bg-gradient-to-b from-sand-50 via-transparent to-sand-50 pointer-events-none z-10" />
                         <div className="relative rounded-3xl overflow-hidden shadow-soft-xl bg-white p-2 group">
-                            <img
+                            <Image
                                 src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1400&q=80"
                                 alt="El Nido, Philippines - beautiful limestone cliffs and turquoise waters"
+                                width={1400}
+                                height={500}
                                 className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover rounded-2xl group-hover:scale-[1.02] transition-transform duration-1000"
+                                unoptimized
                             />
 
                             {/* Floating Cards */}
@@ -87,10 +91,13 @@ export default function LandingPage() {
                                 <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-4 shadow-soft-lg border border-white/50">
                                     <div className="flex items-center gap-3">
                                         <div className="relative">
-                                            <img
+                                            <Image
                                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80"
                                                 alt="Emma"
+                                                width={40}
+                                                height={40}
                                                 className="w-10 h-10 rounded-full object-cover ring-2 ring-sunset-100"
+                                                unoptimized
                                             />
                                             <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full" />
                                         </div>
@@ -212,7 +219,7 @@ export default function LandingPage() {
                                 Your safety is our priority
                             </h2>
                             <p className="text-lg text-neutral-500 mb-10 leading-relaxed">
-                                We know meeting strangers while travelling can feel daunting. That's why safety
+                                We know meeting strangers while travelling can feel daunting. That&apos;s why safety
                                 is deeply integrated into everything we do.
                             </p>
 
@@ -243,10 +250,13 @@ export default function LandingPage() {
                                 </div>
                                 <div className="flex items-center gap-6 mb-8">
                                     <div className="relative">
-                                        <img
+                                        <Image
                                             src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80"
                                             alt="Marcus"
+                                            width={80}
+                                            height={80}
                                             className="w-20 h-20 rounded-2xl object-cover shadow-soft-md"
+                                            unoptimized
                                         />
                                         <div className="absolute -bottom-2 -right-2 bg-green-500 text-white p-1 rounded-lg border-4 border-white">
                                             <CheckCircle className="w-4 h-4" />
@@ -298,7 +308,7 @@ export default function LandingPage() {
                         Ready to explore together?
                     </h2>
                     <p className="text-xl text-neutral-500 mb-12 max-w-2xl mx-auto leading-relaxed">
-                        Join thousands of solo travellers discovering Southeast Asia's best-kept secrets.
+                        Join thousands of solo travellers discovering Southeast Asia&apos;s best-kept secrets.
                         Your next adventure starts here.
                     </p>
                     <Link href="/destinations">
