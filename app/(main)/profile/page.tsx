@@ -11,9 +11,11 @@ import {
     Edit,
     Save,
     Languages,
-    Compass
+    Compass,
+    LogOut
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button, Input, Card, Avatar, AvatarImage, AvatarFallback } from '@/components/ui';
 import { Chip, ChipGroup } from '@/components/shared';
 import { useAuth, useToastActions } from '@/lib/hooks';
@@ -23,7 +25,8 @@ const travelStyles = ['chill', 'party', 'adventurous', 'mixed'];
 const budgetBands = ['low', 'mid', 'higher'];
 
 export default function ProfilePage() {
-    const { user, updateProfile, isAuthenticated } = useAuth();
+    const { user, updateProfile, isAuthenticated, signOut } = useAuth();
+    const router = useRouter();
     const { success } = useToastActions();
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
@@ -90,6 +93,11 @@ export default function ProfilePage() {
         success('Profile updated', 'Your changes have been saved.');
     };
 
+    const handleSignOut = () => {
+        signOut();
+        router.push('/');
+    };
+
     if (!isAuthenticated || !user) {
         return (
             <div className="section-container py-16 flex flex-col items-center justify-center min-h-[60vh]">
@@ -129,17 +137,29 @@ export default function ProfilePage() {
                     <h1 className="text-3xl font-bold text-neutral-900 mb-2">Your Profile</h1>
                     <p className="text-neutral-500">Manage your travel information</p>
                 </div>
-                {isEditing ? (
-                    <Button onClick={handleSave} className="gap-2">
-                        <Save className="w-4 h-4" />
-                        Save changes
-                    </Button>
-                ) : (
-                    <Button variant="secondary" onClick={() => setIsEditing(true)} className="gap-2">
-                        <Edit className="w-4 h-4" />
-                        Edit profile
-                    </Button>
-                )}
+                <div className="flex items-center gap-2">
+                    {!isEditing && (
+                        <Button
+                            variant="ghost"
+                            onClick={handleSignOut}
+                            className="gap-2 text-rose-600 hover:text-rose-700 hover:bg-rose-50"
+                        >
+                            <LogOut className="w-4 h-4" />
+                            Sign Out
+                        </Button>
+                    )}
+                    {isEditing ? (
+                        <Button onClick={handleSave} className="gap-2">
+                            <Save className="w-4 h-4" />
+                            Save changes
+                        </Button>
+                    ) : (
+                        <Button variant="secondary" onClick={() => setIsEditing(true)} className="gap-2">
+                            <Edit className="w-4 h-4" />
+                            Edit profile
+                        </Button>
+                    )}
+                </div>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-6">
