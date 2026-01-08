@@ -22,7 +22,8 @@ import {
 } from 'lucide-react';
 import { Button, Card, Avatar, AvatarImage, AvatarFallback } from '@/components/ui';
 import { Chip, ChipGroup } from '@/components/shared';
-import { useToastActions } from '@/lib/hooks';
+import { useToastActions, useAuth } from '@/lib/hooks';
+import { useRouter } from 'next/navigation';
 import { experiences, companions, destinations } from '@/lib/data';
 import { formatDate, formatTime, getPriceDisplay, cn } from '@/lib/utils';
 
@@ -72,7 +73,14 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
     const spotsLeft = experience.capacity - experience.currentParticipants;
     const Icon = categoryIcons[experience.category] || MapPin;
 
+    const { user, isAuthenticated } = useAuth();
+    const router = useRouter();
+
     const handleRequestJoin = () => {
+        if (!isAuthenticated) {
+            router.push('/sign-in');
+            return;
+        }
         setRequestSent(true);
         success('Request sent!', `${host?.name || 'The host'} will review your request.`);
     };

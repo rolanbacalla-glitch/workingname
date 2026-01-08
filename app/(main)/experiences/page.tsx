@@ -14,12 +14,16 @@ import {
     Music,
     Mountain,
     Landmark,
-    Shield
+    Shield,
+    Trash2,
+    Edit
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { Button, Input, Card, Avatar, AvatarImage, AvatarFallback } from '@/components/ui';
 import { Chip, ChipGroup, EmptyState } from '@/components/shared';
-import { experiences, companions, destinations } from '@/lib/data';
+import { companions, destinations } from '@/lib/data';
 import { formatDate, formatTime, getPriceDisplay, getVibeColor, cn } from '@/lib/utils';
+import { useAuth, useExperiences, useToastActions } from '@/lib/hooks';
 
 const categoryIcons: Record<string, React.ElementType> = {
     food: Utensils,
@@ -33,6 +37,11 @@ const categories = ['all', 'food', 'island', 'nightlife', 'hike', 'culture'];
 const vibes = ['all', 'chill', 'party', 'adventurous', 'mixed'];
 
 export default function ExperiencesPage() {
+    const router = useRouter();
+    const { user, isAuthenticated } = useAuth();
+    const { experiences, deleteExperience } = useExperiences();
+    const { success } = useToastActions();
+
     const [search, setSearch] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('all');
     const [vibeFilter, setVibeFilter] = useState('all');
@@ -43,6 +52,14 @@ export default function ExperiencesPage() {
         const matchesVibe = vibeFilter === 'all' || exp.vibeTag === vibeFilter;
         return matchesSearch && matchesCategory && matchesVibe;
     });
+
+    const handleDelete = (e: React.MouseEvent, id: string) => {
+        e.preventDefault(); // Prevent navigation
+        if (confirm('Are you sure you want to delete this experience?')) {
+            deleteExperience(id);
+            success('Experience deleted', 'The experience has been removed.');
+        }
+    };
 
     const getHost = (hostId: string) => companions.find((c) => c.id === hostId);
     const getDestination = (destId: string) => destinations.find((d) => d.id === destId);
@@ -138,9 +155,30 @@ export default function ExperiencesPage() {
                                                 <Icon className="w-5 h-5 text-neutral-600" />
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <h3 className="font-semibold text-neutral-900 line-clamp-2 mb-1">
-                                                    {exp.title}
-                                                </h3>
+                                                <div className="flex justify-between items-start">
+                                                    <h3 className="font-semibold text-neutral-900 line-clamp-2 mb-1">
+                                                        {exp.title}
+                                                    </h3>
+                                                    {isAuthenticated && user?.id === exp.hostId && (
+                                                        <div className="flex gap-1">
+                                                            <button
+                                                                onClick={(e: React.MouseEvent) => {
+                                                                    e.preventDefault();
+                                                                    router.push(`/experiences/${exp.id}/edit`);
+                                                                }}
+                                                                className="p-1 hover:bg-sand-100 rounded text-neutral-500 hover:text-ocean-600 transition-colors"
+                                                            >
+                                                                <Edit className="w-4 h-4" />
+                                                            </button>
+                                                            <button
+                                                                onClick={(e: React.MouseEvent) => handleDelete(e, exp.id)}
+                                                                className="p-1 hover:bg-sand-100 rounded text-neutral-500 hover:text-rose-600 transition-colors"
+                                                            >
+                                                                <Trash2 className="w-4 h-4" />
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
                                                 <div className="flex items-center gap-1 text-sm text-neutral-500">
                                                     <MapPin className="w-3.5 h-3.5" />
                                                     {dest?.name}

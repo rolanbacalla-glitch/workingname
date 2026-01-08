@@ -14,9 +14,10 @@ import {
 } from 'lucide-react';
 import { Button, Input, Card, Avatar, AvatarImage, AvatarFallback } from '@/components/ui';
 import { Chip, ChipGroup, EmptyState } from '@/components/shared';
-import { useToastActions } from '@/lib/hooks';
+import { useToastActions, useAuth } from '@/lib/hooks';
 import { companions, destinations } from '@/lib/data';
 import { formatDate, cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 const ageRanges = ['all', '20-25', '26-30', '31-35', '36-40'];
 const travelStyles = ['all', 'chill', 'party', 'adventurous', 'mixed'];
@@ -30,6 +31,8 @@ export default function CompanionsPage() {
         new Set(companions.filter((c) => c.hasWaved).map((c) => c.id))
     );
     const { success } = useToastActions();
+    const { isAuthenticated } = useAuth();
+    const router = useRouter();
 
     const filteredCompanions = companions.filter((comp) => {
         const matchesSearch = comp.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -40,6 +43,11 @@ export default function CompanionsPage() {
     });
 
     const handleWave = (companionId: string, name: string) => {
+        if (!isAuthenticated) {
+            router.push('/sign-in');
+            return;
+        }
+
         const newWaved = new Set(wavedCompanions);
         if (newWaved.has(companionId)) {
             newWaved.delete(companionId);

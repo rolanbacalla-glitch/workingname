@@ -5,6 +5,7 @@ interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
     variant?: 'default' | 'active' | 'vibe';
     vibe?: string;
     className?: string;
+    children?: React.ReactNode;
 }
 
 export function Chip({ className, variant = 'default', vibe, children, ...props }: ChipProps) {

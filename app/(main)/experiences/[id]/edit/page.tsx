@@ -1,16 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import {
     ArrowLeft,
-    Calendar,
-    Clock,
-    Users,
-    MapPin,
-    DollarSign,
-    Info,
     Shield,
     CheckCircle
 } from 'lucide-react';
@@ -18,7 +12,6 @@ import { Button, Input, Card } from '@/components/ui';
 import { Chip, ChipGroup } from '@/components/shared';
 import { useToastActions, useExperiences, useAuth } from '@/lib/hooks';
 import { destinations } from '@/lib/data';
-import { useEffect } from 'react';
 
 const categories = [
     { id: 'food', label: 'Food & Dining', icon: '🍜' },
@@ -30,20 +23,14 @@ const categories = [
 
 const vibes = ['chill', 'party', 'adventurous', 'mixed'] as const;
 
-export default function NewExperiencePage() {
+export default function EditExperiencePage() {
     const router = useRouter();
-    const { success } = useToastActions();
-    const { addExperience } = useExperiences();
+    const params = useParams();
+    const { success, error } = useToastActions();
+    const { getExperience, updateExperience } = useExperiences();
     const { user, isAuthenticated } = useAuth();
 
-    useEffect(() => {
-        if (!isAuthenticated) {
-            router.push('/sign-in');
-        }
-    }, [isAuthenticated, router]);
-
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isLocalHost, setIsLocalHost] = useState(false);
     const [formData, setFormData] = useState({
         title: '',
         destinationId: '',
@@ -59,37 +46,67 @@ export default function NewExperiencePage() {
         whatToBring: '',
     });
 
+    useEffect(() => {
+        if (!isAuthenticated) {
+            router.push('/sign-in');
+            return;
+        }
+
+        const exp = getExperience(params.id as string);
+        if (!exp) {
+            error('Error', 'Experience not found');
+            router.push('/experiences');
+            return;
+        }
+
+        if (exp.hostId !== user?.id) {
+            error('Access denied', 'You can only edit your own experiences');
+            router.push('/experiences');
+            return;
+        }
+
+        setFormData({
+            title: exp.title,
+            destinationId: exp.destinationId,
+            category: exp.category,
+            vibeTag: exp.vibeTag,
+            date: exp.date,
+            time: exp.time,
+            duration: exp.duration,
+            capacity: String(exp.capacity),
+            priceLevel: String(exp.priceLevel),
+            description: exp.description,
+            meetingPoint: exp.meetingPoint,
+            whatToBring: exp.whatToBring.join(', '),
+        });
+    }, [isAuthenticated, router, params.id, getExperience, user, error]);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!user) return;
-
         setIsSubmitting(true);
 
         // Simulate network delay
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
 
-        const newExperience: any = {
-            id: `exp-${Date.now()}`,
+        updateExperience(params.id as string, {
             ...formData,
             capacity: Number(formData.capacity),
-            priceLevel: Number(formData.priceLevel),
+            priceLevel: Number(formData.priceLevel) as 1 | 2 | 3,
             whatToBring: formData.whatToBring.split(',').map(s => s.trim()).filter(Boolean),
-            hostId: user.id,
-            currentParticipants: 1,
-            participantIds: [user.id],
-            safetyNotes: [], // Default empty for now
-            meetingPointCoords: { lat: 0, lng: 0 }, // Placeholder
-        };
+            // Cast types that we know are correct from the form
+            category: formData.category as any,
+            vibeTag: formData.vibeTag as any,
+        });
 
-        addExperience(newExperience);
-
-        success('Experience created!', 'Your experience is now live and visible to other travellers.');
+        success('Experience updated!', 'Your changes have been saved.');
         router.push('/experiences');
     };
+
+    if (!user) return null;
 
     return (
         <div className="min-h-screen pb-8">
@@ -104,7 +121,7 @@ export default function NewExperiencePage() {
                         <span className="hidden sm:inline">Back</span>
                     </Link>
                     <div className="h-6 w-px bg-sand-200" />
-                    <h1 className="font-semibold text-neutral-900">Host an experience</h1>
+                    <h1 className="font-semibold text-neutral-900">Edit experience</h1>
                 </div>
             </div>
 
@@ -336,35 +353,6 @@ export default function NewExperiencePage() {
                             </div>
                         </Card>
 
-                        {/* Local Host Toggle */}
-                        <Card className="p-6">
-                            <div className="flex items-start gap-4">
-                                <button
-                                    type="button"
-                                    onClick={() => setIsLocalHost(!isLocalHost)}
-                                    className={`w-12 h-7 rounded-full transition-colors ${isLocalHost ? 'bg-sunset-500' : 'bg-sand-200'
-                                        } relative`}
-                                >
-                                    <span
-                                        className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${isLocalHost ? 'translate-x-6' : 'translate-x-1'
-                                            }`}
-                                    />
-                                </button>
-                                <div>
-                                    <p className="font-medium text-neutral-900 flex items-center gap-2">
-                                        I am a local host
-                                        <span className="bg-ocean-100 text-ocean-700 text-xs px-2 py-0.5 rounded-full">
-                                            Optional
-                                        </span>
-                                    </p>
-                                    <p className="text-sm text-neutral-500 mt-1">
-                                        Enable this if you're a local offering experiences to travellers.
-                                        Additional verification may be required.
-                                    </p>
-                                </div>
-                            </div>
-                        </Card>
-
                         {/* Safety Info Box */}
                         <Card className="p-6 bg-green-50 border-green-200">
                             <div className="flex items-center gap-3 mb-4">
@@ -401,7 +389,7 @@ export default function NewExperiencePage() {
                                 disabled={isSubmitting}
                                 className="flex-1"
                             >
-                                {isSubmitting ? 'Creating...' : 'Create experience'}
+                                {isSubmitting ? 'Saving...' : 'Save changes'}
                             </Button>
                         </div>
                     </form>
