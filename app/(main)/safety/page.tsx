@@ -191,7 +191,7 @@ export default function SafetyPage() {
 
                         <div className="space-y-4">
                             <Link
-                                href="/app/profile"
+                                href="/profile"
                                 className="flex items-center justify-between p-3 bg-sand-50 rounded-xl hover:bg-sand-100 transition-colors"
                             >
                                 <div className="flex items-center gap-3">
@@ -205,7 +205,7 @@ export default function SafetyPage() {
                             </Link>
 
                             <Link
-                                href="/app/profile"
+                                href="/profile"
                                 className="flex items-center justify-between p-3 bg-sand-50 rounded-xl hover:bg-sand-100 transition-colors"
                             >
                                 <div className="flex items-center gap-3">
@@ -219,7 +219,7 @@ export default function SafetyPage() {
                             </Link>
 
                             <Link
-                                href="/app/profile"
+                                href="/profile"
                                 className="flex items-center justify-between p-3 bg-sand-50 rounded-xl hover:bg-sand-100 transition-colors"
                             >
                                 <div className="flex items-center gap-3">

@@ -21,7 +21,7 @@ export default function SignInPage() {
         await new Promise((resolve) => setTimeout(resolve, 500));
 
         signIn(email);
-        router.push('/app/destinations');
+        router.push('/destinations');
     };
 
     return (

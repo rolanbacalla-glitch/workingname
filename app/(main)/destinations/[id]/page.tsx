@@ -31,7 +31,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
 
                 {/* Back Button */}
                 <Link
-                    href="/app/destinations"
+                    href="/destinations"
                     className="absolute top-4 left-4 flex items-center gap-2 bg-white/20 backdrop-blur-lg text-white px-3 py-2 rounded-lg text-sm hover:bg-white/30 transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4" />
@@ -58,7 +58,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
             {/* Content */}
             <div className="section-container py-8">
                 {/* Map Button */}
-                <Link href={`/app/destinations/${destination.id}/map`}>
+                <Link href={`/destinations/${destination.id}/map`}>
                     <Button variant="secondary" className="gap-2 mb-8">
                         <Map className="w-4 h-4" />
                         View experiences on map
@@ -131,7 +131,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
                                 ))}
                             </ul>
                             <div className="mt-6 pt-6 border-t border-sand-100">
-                                <Link href="/app/safety">
+                                <Link href="/safety">
                                     <Button variant="ghost" className="gap-2">
                                         <Shield className="w-4 h-4" />
                                         View Safety Centre

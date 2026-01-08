@@ -38,7 +38,7 @@ export default function DestinationsPage() {
             {/* Destinations Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredDestinations.map((destination) => (
-                    <Link key={destination.id} href={`/app/destinations/${destination.id}`}>
+                    <Link key={destination.id} href={`/destinations/${destination.id}`}>
                         <Card interactive className="overflow-hidden h-full">
                             <div className="relative h-48">
                                 <img

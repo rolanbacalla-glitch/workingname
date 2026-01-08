@@ -29,7 +29,7 @@ export default function LandingPage() {
                         <Link href="/sign-in" className="text-sm font-medium text-neutral-600 hover:text-neutral-900 transition-colors">
                             Sign in
                         </Link>
-                        <Link href="/app/destinations">
+                        <Link href="/destinations">
                             <Button size="sm">Launch App</Button>
                         </Link>
                     </div>
@@ -51,7 +51,7 @@ export default function LandingPage() {
                             and explore Southeast Asia with confidence.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link href="/app/destinations">
+                            <Link href="/destinations">
                                 <Button size="lg" className="gap-2">
                                     Launch web app
                                     <ArrowRight className="w-5 h-5" />
@@ -273,7 +273,7 @@ export default function LandingPage() {
                         Join thousands of solo travellers discovering Southeast Asia's best-kept secrets.
                         Your next adventure starts here.
                     </p>
-                    <Link href="/app/destinations">
+                    <Link href="/destinations">
                         <Button size="lg" className="gap-2">
                             Launch web app
                             <ArrowRight className="w-5 h-5" />

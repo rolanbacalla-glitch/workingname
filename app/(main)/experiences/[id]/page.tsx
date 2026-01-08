@@ -83,7 +83,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
             <div className="bg-white border-b border-sand-100 sticky top-14 md:top-16 z-30">
                 <div className="section-container py-4 flex items-center gap-4">
                     <Link
-                        href="/app/experiences"
+                        href="/experiences"
                         className="flex items-center gap-2 text-neutral-600 hover:text-neutral-900 transition-colors"
                     >
                         <ArrowLeft className="w-5 h-5" />
@@ -212,7 +212,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                                 ))}
                             </ul>
                             <div className="mt-4 pt-4 border-t border-sand-100">
-                                <Link href="/app/safety" className="text-sm text-ocean-600 hover:underline">
+                                <Link href="/safety" className="text-sm text-ocean-600 hover:underline">
                                     View Safety Centre →
                                 </Link>
                             </div>

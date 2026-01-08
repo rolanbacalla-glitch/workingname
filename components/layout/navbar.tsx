@@ -22,11 +22,11 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-    { href: '/app/destinations', label: 'Destinations', icon: Compass },
-    { href: '/app/experiences', label: 'Experiences', icon: Calendar },
-    { href: '/app/companions', label: 'Companions', icon: Users },
-    { href: '/app/safety', label: 'Safety', icon: Shield },
-    { href: '/app/profile', label: 'Profile', icon: User },
+    { href: '/destinations', label: 'Destinations', icon: Compass },
+    { href: '/experiences', label: 'Experiences', icon: Calendar },
+    { href: '/companions', label: 'Companions', icon: Users },
+    { href: '/safety', label: 'Safety', icon: Shield },
+    { href: '/profile', label: 'Profile', icon: User },
 ];
 
 export function Navbar() {
@@ -39,7 +39,7 @@ export function Navbar() {
             <nav className="hidden md:flex fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-xl border-b border-sand-100">
                 <div className="w-full max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/app/destinations" className="flex items-center gap-2">
+                    <Link href="/destinations" className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-sunset-400 to-ocean-500 flex items-center justify-center">
                             <Compass className="w-5 h-5 text-white" />
                         </div>
@@ -99,7 +99,7 @@ export function Navbar() {
             {/* Mobile Top Bar */}
             <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-xl border-b border-sand-100 safe-area-top">
                 <div className="flex items-center justify-between h-14 px-4">
-                    <Link href="/app/destinations" className="flex items-center gap-2">
+                    <Link href="/destinations" className="flex items-center gap-2">
                         <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-sunset-400 to-ocean-500 flex items-center justify-center">
                             <Compass className="w-4 h-4 text-white" />
                         </div>

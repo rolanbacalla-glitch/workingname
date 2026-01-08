@@ -62,7 +62,7 @@ export default function NewExperiencePage() {
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
         success('Experience created!', 'Your experience is now live and visible to other travellers.');
-        router.push('/app/experiences');
+        router.push('/experiences');
     };
 
     return (
@@ -71,7 +71,7 @@ export default function NewExperiencePage() {
             <div className="bg-white border-b border-sand-100 sticky top-14 md:top-16 z-30">
                 <div className="section-container py-4 flex items-center gap-4">
                     <Link
-                        href="/app/experiences"
+                        href="/experiences"
                         className="flex items-center gap-2 text-neutral-600 hover:text-neutral-900 transition-colors"
                     >
                         <ArrowLeft className="w-5 h-5" />
@@ -134,8 +134,8 @@ export default function NewExperiencePage() {
                                                 type="button"
                                                 onClick={() => setFormData({ ...formData, category: cat.id })}
                                                 className={`p-3 rounded-xl border text-left transition-all ${formData.category === cat.id
-                                                        ? 'border-sunset-400 bg-sunset-50'
-                                                        : 'border-sand-200 hover:border-sand-300'
+                                                    ? 'border-sunset-400 bg-sunset-50'
+                                                    : 'border-sand-200 hover:border-sand-300'
                                                     }`}
                                             >
                                                 <span className="text-xl mb-1 block">{cat.icon}</span>
@@ -248,8 +248,8 @@ export default function NewExperiencePage() {
                                                 type="button"
                                                 onClick={() => setFormData({ ...formData, priceLevel: String(level) })}
                                                 className={`flex-1 py-3 rounded-xl border text-center font-medium transition-all ${formData.priceLevel === String(level)
-                                                        ? 'border-sunset-400 bg-sunset-50 text-sunset-700'
-                                                        : 'border-sand-200 hover:border-sand-300 text-neutral-600'
+                                                    ? 'border-sunset-400 bg-sunset-50 text-sunset-700'
+                                                    : 'border-sand-200 hover:border-sand-300 text-neutral-600'
                                                     }`}
                                             >
                                                 {'₱'.repeat(level)}

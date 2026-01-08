@@ -4,6 +4,7 @@ import { cn, getVibeColor } from '@/lib/utils';
 interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
     variant?: 'default' | 'active' | 'vibe';
     vibe?: string;
+    className?: string;
 }
 
 export function Chip({ className, variant = 'default', vibe, children, ...props }: ChipProps) {
@@ -26,7 +27,7 @@ export function Chip({ className, variant = 'default', vibe, children, ...props 
 }
 
 interface ChipGroupProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     className?: string;
 }
 

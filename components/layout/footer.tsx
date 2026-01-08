@@ -24,17 +24,17 @@ export function Footer() {
                         <h4 className="font-medium text-neutral-900 mb-4">Explore</h4>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/app/destinations" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                                <Link href="/destinations" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                                     Destinations
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/app/experiences" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                                <Link href="/experiences" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                                     Experiences
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/app/companions" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                                <Link href="/companions" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                                     Find Companions
                                 </Link>
                             </li>
@@ -45,17 +45,17 @@ export function Footer() {
                         <h4 className="font-medium text-neutral-900 mb-4">Safety</h4>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/app/safety" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                                <Link href="/safety" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                                     Safety Centre
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/app/safety#guidelines" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                                <Link href="/safety#guidelines" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                                     Guidelines
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/app/safety#emergency" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+                                <Link href="/safety#emergency" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
                                     Emergency Info
                                 </Link>
                             </li>

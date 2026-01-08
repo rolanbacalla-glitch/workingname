@@ -22,7 +22,7 @@ export default function NotFound() {
                             Back home
                         </Button>
                     </Link>
-                    <Link href="/app/destinations">
+                    <Link href="/destinations">
                         <Button>
                             Explore destinations
                         </Button>

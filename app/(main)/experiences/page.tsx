@@ -55,7 +55,7 @@ export default function ExperiencesPage() {
                     <h1 className="text-3xl font-bold text-neutral-900 mb-2">Experiences</h1>
                     <p className="text-neutral-500">Join or host local adventures with fellow travellers</p>
                 </div>
-                <Link href="/app/experiences/new">
+                <Link href="/experiences/new">
                     <Button className="gap-2">
                         <Plus className="w-4 h-4" />
                         Host experience
@@ -129,7 +129,7 @@ export default function ExperiencesPage() {
                         const spotsLeft = exp.capacity - exp.currentParticipants;
 
                         return (
-                            <Link key={exp.id} href={`/app/experiences/${exp.id}`}>
+                            <Link key={exp.id} href={`/experiences/${exp.id}`}>
                                 <Card interactive className="h-full flex flex-col">
                                     <div className="p-5 flex-1">
                                         {/* Header */}
@@ -204,7 +204,7 @@ export default function ExperiencesPage() {
                     title="No experiences found"
                     description="Try adjusting your filters or search term, or be the first to host an experience!"
                     action={
-                        <Link href="/app/experiences/new">
+                        <Link href="/experiences/new">
                             <Button className="gap-2">
                                 <Plus className="w-4 h-4" />
                                 Host experience

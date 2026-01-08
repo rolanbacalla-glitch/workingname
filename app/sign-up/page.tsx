@@ -22,7 +22,7 @@ export default function SignUpPage() {
         await new Promise((resolve) => setTimeout(resolve, 500));
 
         signUp(email, name);
-        router.push('/app/profile');
+        router.push('/profile');
     };
 
     return (

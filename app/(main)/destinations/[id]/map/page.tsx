@@ -65,7 +65,7 @@ export default function MapPage({ params }: MapPageProps) {
             {/* Header */}
             <div className="bg-white border-b border-sand-100 px-4 py-3 flex items-center gap-4">
                 <Link
-                    href={`/app/destinations/${destination.id}`}
+                    href={`/destinations/${destination.id}`}
                     className="flex items-center gap-2 text-neutral-600 hover:text-neutral-900 transition-colors"
                 >
                     <ArrowLeft className="w-5 h-5" />
@@ -91,8 +91,8 @@ export default function MapPage({ params }: MapPageProps) {
                                     key={exp.id}
                                     onClick={() => setSelectedExperience(exp.id)}
                                     className={`w-full text-left rounded-xl p-4 transition-all duration-200 ${isSelected
-                                            ? 'bg-white shadow-soft-md ring-2 ring-sunset-400'
-                                            : 'bg-white shadow-soft hover:shadow-soft-md'
+                                        ? 'bg-white shadow-soft-md ring-2 ring-sunset-400'
+                                        : 'bg-white shadow-soft hover:shadow-soft-md'
                                         }`}
                                 >
                                     <div className="flex items-start gap-3">
@@ -186,7 +186,7 @@ export default function MapPage({ params }: MapPageProps) {
                                 <p className="text-sm text-neutral-600 mb-4 line-clamp-2">
                                     {selectedExp.description}
                                 </p>
-                                <Link href={`/app/experiences/${selectedExp.id}`}>
+                                <Link href={`/experiences/${selectedExp.id}`}>
                                     <Button className="w-full">View details</Button>
                                 </Link>
                             </Card>

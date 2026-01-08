@@ -210,7 +210,7 @@ export default function CompanionsPage() {
                                         <Hand className={cn('w-4 h-4', hasWaved && 'animate-pulse')} />
                                         {hasWaved ? 'Waved ✓' : 'Wave 👋'}
                                     </Button>
-                                    <Link href={`/app/companions/${companion.id}`} className="flex-1">
+                                    <Link href={`/companions/${companion.id}`} className="flex-1">
                                         <Button variant="ghost" className="w-full gap-2">
                                             View Profile
                                             <ChevronRight className="w-4 h-4" />
