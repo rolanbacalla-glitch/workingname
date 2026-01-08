@@ -2,6 +2,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, MapPin, Shield, Map, ChevronRight } from 'lucide-react';
 import { Button, Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui';
 import { Chip, ChipGroup } from '@/components/shared';
@@ -23,10 +24,12 @@ export default function DestinationPage({ params }: DestinationPageProps) {
         <div className="min-h-screen">
             {/* Hero Section */}
             <div className="relative h-[300px] sm:h-[400px]">
-                <img
+                <Image
                     src={destination.heroImage}
                     alt={destination.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 

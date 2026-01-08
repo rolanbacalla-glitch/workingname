@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, MapPin } from 'lucide-react';
 import { Input, Card } from '@/components/ui';
 import { Chip, ChipGroup } from '@/components/shared';
@@ -47,10 +48,12 @@ export default function DestinationsPage() {
                     >
                         <Card interactive className="overflow-hidden h-full group">
                             <div className="relative h-48">
-                                <img
+                                <Image
                                     src={destination.heroImage}
                                     alt={destination.name}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                    unoptimized
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-colors" />
                                 <div className="absolute bottom-4 left-4 right-4">
