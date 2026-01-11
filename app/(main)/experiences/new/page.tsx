@@ -111,7 +111,7 @@ export default function NewExperiencePage() {
             ...formData,
             capacity: Number(formData.capacity),
             priceLevel: Number(formData.priceLevel),
-            whatToBring: formData.whatToBring.split(',').map(s => s.trim()).filter(Boolean),
+            whatToBring: formData.whatToBring.split(',').map((s: string) => s.trim()).filter(Boolean),
             hostId: user.id,
             currentParticipants: 1,
             participantIds: [user.id],

@@ -61,15 +61,15 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
         setIsClient(true);
     });
 
-    const experience = experiences.find((e) => e.id === params.id);
+    const experience = experiences.find((e: Experience) => e.id === params.id);
 
     if (!experience) {
         notFound();
     }
 
-    const host = companions.find((c) => c.id === experience.hostId);
-    const destination = destinations.find((d) => d.id === experience.destinationId);
-    const participants = companions.filter((c) => experience.participantIds.includes(c.id));
+    const host = companions.find((c: Companion) => c.id === experience.hostId);
+    const destination = destinations.find((d: Destination) => d.id === experience.destinationId);
+    const participants = companions.filter((c: Companion) => experience.participantIds.includes(c.id));
     const spotsLeft = experience.capacity - experience.currentParticipants;
     const Icon = categoryIcons[experience.category] || MapPin;
 

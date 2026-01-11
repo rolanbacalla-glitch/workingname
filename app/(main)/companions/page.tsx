@@ -39,7 +39,7 @@ export default function CompanionsPage() {
                 companion.nationality.toLowerCase().includes(search.toLowerCase());
 
             const matchesAge = ageFilter === 'all' || companion.ageRange === ageFilter;
-            const matchesStyle = styleFilter === 'all' || companion.interests.some(i => i.toLowerCase().includes(styleFilter));
+            const matchesStyle = styleFilter === 'all' || companion.interests.some((i: string) => i.toLowerCase().includes(styleFilter));
 
             return matchesSearch && matchesAge && matchesStyle;
         });

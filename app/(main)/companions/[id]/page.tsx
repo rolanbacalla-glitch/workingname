@@ -27,7 +27,7 @@ interface CompanionPageProps {
 }
 
 export default function CompanionPage({ params }: CompanionPageProps) {
-    const companion = companions.find((c) => c.id === params.id);
+    const companion = companions.find((c: Companion) => c.id === params.id);
     const { user, isAuthenticated, toggleWave } = useAuth();
     const { success } = useToastActions();
 
@@ -36,7 +36,7 @@ export default function CompanionPage({ params }: CompanionPageProps) {
     }
 
     const isWaved = user?.wavedCompanions?.includes(companion.id);
-    const upcomingTrips = experiences.filter(e => companion.upcomingTrips.includes(e.id));
+    const upcomingTrips = experiences.filter((e: Experience) => companion.upcomingTrips.includes(e.id));
 
     const handleWave = () => {
         toggleWave(companion.id);

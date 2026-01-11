@@ -181,7 +181,7 @@ export const destinations: Destination[] = [
         name: 'Bandar Seri Begawan',
         country: 'Brunei',
         vibeStatement: 'Golden mosques, lush rainforests, and peaceful water villages',
-        heroImage: 'https://images.unsplash.com/photo-1541123437800-1bb138bf8184?w=1200&q=80',
+        heroImage: 'https://images.unsplash.com/photo-1609946860441-a51ffcf22208?w=1200&q=80',
         overview: 'Brunei’s capital is a quiet, wealthy city known for its stunning Islamic architecture and the Kampong Ayer water village. It offers a peaceful retreat with easy access to pristine rainforests.',
         neighbourhoods: [
             {
@@ -216,7 +216,7 @@ export const destinations: Destination[] = [
         name: 'Siem Reap',
         country: 'Cambodia',
         vibeStatement: 'Gateway to Angkor, sunrise magic, and vibrant night markets',
-        heroImage: 'https://images.unsplash.com/photo-1565063073708-348f94d03612?w=1200&q=80',
+        heroImage: 'https://images.unsplash.com/photo-1564596823821-79b97151b927?w=1200&q=80',
         overview: 'Siem Reap is the gateway to the ancient world of Angkor Wat. Beyond the temples, it boasts a lively backpacker scene, thriving arts culture, and incredible Khmer cuisine.',
         neighbourhoods: [
             {
@@ -321,7 +321,7 @@ export const destinations: Destination[] = [
         name: 'Bagan',
         country: 'Myanmar',
         vibeStatement: 'Thousands of temples, dusty paths, and timeless sunrises',
-        heroImage: 'https://images.unsplash.com/photo-1549618828-98e3c3b0f56a?w=1200&q=80',
+        heroImage: 'https://images.unsplash.com/photo-1558431558-8f3dc31f1c61?w=1200&q=80',
         overview: 'Bagan is an archaeological wonderland with over 2,000 Buddhist monuments towering over green plains. Exploring the temples by e-bike or hot air balloon is an unforgettable experience.',
         neighbourhoods: [
             {
