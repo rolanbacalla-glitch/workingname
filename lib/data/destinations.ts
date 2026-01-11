@@ -321,7 +321,7 @@ export const destinations: Destination[] = [
         name: 'Bagan',
         country: 'Myanmar',
         vibeStatement: 'Thousands of temples, dusty paths, and timeless sunrises',
-        heroImage: 'https://images.unsplash.com/photo-1551972251-12070d63502a?w=1200&q=80',
+        heroImage: 'https://images.unsplash.com/photo-1540611025311-01df3cef54b5?w=1200&q=80',
         overview: 'Bagan is an archaeological wonderland with over 2,000 Buddhist monuments towering over green plains. Exploring the temples by e-bike or hot air balloon is an unforgettable experience.',
         neighbourhoods: [
             {
