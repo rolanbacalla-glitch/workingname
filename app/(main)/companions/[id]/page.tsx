@@ -36,7 +36,9 @@ export default function CompanionPage({ params }: CompanionPageProps) {
     }
 
     const isWaved = user?.wavedCompanions?.includes(companion.id);
-    const upcomingTrips = experiences.filter((e: Experience) => companion.upcomingTrips.includes(e.id));
+    const upcomingTrips = experiences.filter((e: Experience) =>
+        e.participantIds.includes(companion.id) || e.hostId === companion.id
+    );
 
     const handleWave = () => {
         toggleWave(companion.id);
