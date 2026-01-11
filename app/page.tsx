@@ -73,21 +73,45 @@ export default function LandingPage() {
                         </div>
                     </div>
 
-                    {/* Hero Image / Cards */}
+                    {/* Hero Image Carousel */}
                     <div className="mt-16 relative animate-fadeIn" style={{ animationDelay: '400ms' }}>
                         <div className="absolute inset-0 bg-gradient-to-b from-sand-50 via-transparent to-sand-50 pointer-events-none z-10" />
                         <div className="relative rounded-3xl overflow-hidden shadow-soft-xl bg-white p-2 group">
-                            <Image
-                                src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1400&q=80"
-                                alt="El Nido, Philippines - beautiful limestone cliffs and turquoise waters"
-                                width={1400}
-                                height={500}
-                                className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover rounded-2xl group-hover:scale-[1.02] transition-transform duration-1000"
-                                unoptimized
-                            />
+                            {/* Carousel Container */}
+                            <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
+                                {[
+                                    { src: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1400&q=80', alt: 'Solo traveler with arms open on mountain cliff' },
+                                    { src: 'https://images.unsplash.com/photo-1528181304800-259b08848526?w=1400&q=80', alt: 'Backpacker exploring ancient temple ruins' },
+                                    { src: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=1400&q=80', alt: 'Traveler overlooking ocean coastal view' },
+                                    { src: 'https://images.unsplash.com/photo-1504150558240-0b4fd8946624?w=1400&q=80', alt: 'Backpacker in busy Asian street market' },
+                                    { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80', alt: 'Beach sunset with palm trees' },
+                                ].map((image, index) => (
+                                    <Image
+                                        key={index}
+                                        src={image.src}
+                                        alt={image.alt}
+                                        width={1400}
+                                        height={500}
+                                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+                                        style={{
+                                            opacity: 'var(--carousel-opacity)',
+                                            animation: `carouselFade 25s infinite`,
+                                            animationDelay: `${index * 5}s`,
+                                        }}
+                                        unoptimized
+                                    />
+                                ))}
+                                <style jsx>{`
+                                    @keyframes carouselFade {
+                                        0%, 16% { opacity: 1; }
+                                        20%, 96% { opacity: 0; }
+                                        100% { opacity: 1; }
+                                    }
+                                `}</style>
+                            </div>
 
                             {/* Floating Cards */}
-                            <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-auto flex gap-4 animate-float">
+                            <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-auto flex gap-4 animate-float z-20">
                                 <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-4 shadow-soft-lg border border-white/50">
                                     <div className="flex items-center gap-3">
                                         <div className="relative">
@@ -109,7 +133,7 @@ export default function LandingPage() {
                                 </div>
                             </div>
 
-                            <div className="hidden sm:block absolute top-8 right-8 bg-white/90 backdrop-blur-xl rounded-2xl p-4 shadow-soft-lg border border-white/50 animate-float [animation-delay:-1.5s]">
+                            <div className="hidden sm:block absolute top-8 right-8 bg-white/90 backdrop-blur-xl rounded-2xl p-4 shadow-soft-lg border border-white/50 animate-float [animation-delay:-1.5s] z-20">
                                 <div className="flex items-center gap-2 mb-2">
                                     <div className="w-6 h-6 rounded-full bg-sunset-100 flex items-center justify-center">
                                         <MapPin className="w-3.5 h-3.5 text-sunset-500" />
