@@ -122,7 +122,7 @@ export default function ProfilePage() {
                             </Link>
 
                             <Link href="/sign-up" className="block w-full">
-                                <Button variant="outline" className="w-full" size="lg">Create Account</Button>
+                                <Button variant="secondary" className="w-full" size="lg">Create Account</Button>
                             </Link>
                         </div>
                     </Card>
