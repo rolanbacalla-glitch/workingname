@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import {
-    User,
+    User as UserIcon,
     MapPin,
     Calendar,
     Globe,
@@ -20,7 +20,7 @@ import { Button, Input, Card, Avatar, AvatarImage, AvatarFallback } from '@/comp
 import { Chip, ChipGroup } from '@/components/shared';
 import { useAuth, useToastActions } from '@/lib/hooks';
 import { experiences, companions } from '@/lib/data';
-import { Companion } from '@/lib/types';
+import { Companion, User } from '@/lib/types';
 
 const ageRanges = ['20-25', '26-30', '31-35', '36-40'];
 const travelStyles = ['chill', 'party', 'adventurous', 'mixed'];
