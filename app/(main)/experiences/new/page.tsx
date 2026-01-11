@@ -110,7 +110,7 @@ export default function NewExperiencePage() {
             id: `exp-${Date.now()}`,
             ...formData,
             capacity: Number(formData.capacity),
-            priceLevel: Number(formData.priceLevel),
+            priceLevel: Number(formData.priceLevel) as 1 | 2 | 3,
             whatToBring: formData.whatToBring.split(',').map((s: string) => s.trim()).filter(Boolean),
             hostId: user.id,
             currentParticipants: 1,
