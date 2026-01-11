@@ -216,7 +216,7 @@ export const destinations: Destination[] = [
         name: 'Siem Reap',
         country: 'Cambodia',
         vibeStatement: 'Gateway to Angkor, sunrise magic, and vibrant night markets',
-        heroImage: 'https://images.unsplash.com/photo-1508159452718-d22f6734a00d?w=1200&q=80',
+        heroImage: 'https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=1200&q=80',
         overview: 'Siem Reap is the gateway to the ancient world of Angkor Wat. Beyond the temples, it boasts a lively backpacker scene, thriving arts culture, and incredible Khmer cuisine.',
         neighbourhoods: [
             {
